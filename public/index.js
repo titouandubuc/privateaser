@@ -18,7 +18,7 @@ const bars = [{
   'name': 'la-poudriere',
   'pricePerHour': 250,
   'pricePerPerson': 80
-}];
+    }];
 
 //list of current booking events
 //useful for ALL steps
@@ -27,15 +27,16 @@ const bars = [{
 //The `commission` is updated from step 3
 //The `options` is useful from step 4
 const events = [{
-  'id': 'bba9500c-fd9e-453f-abf1-4cd8f52af377',
-  'booker': 'esilv-bde',
-  'barId': 'f944a3ff-591b-4d5b-9b67-c7e08cba9791',
-  'time': 4,
-  'persons': 8,
-  'options': {
-    'deductibleReduction': false
-  },
-  'price': 0,
+    'id': 'bba9500c-fd9e-453f-abf1-4cd8f52af377',
+    'booker': 'esilv-bde',
+    'barId': 'f944a3ff-591b-4d5b-9b67-c7e08cba9791',
+    'time': 4,
+    'persons': 8,
+    'options': {
+        'deductibleReduction': false
+    },
+    'price': 0,
+
   'commission': {
     'insurance': 0,
     'treasury': 0,
@@ -145,7 +146,18 @@ const actors = [{
     'amount': 0
   }]
 }];
+function calculateprice() {
+    for (var j = 0; j < events.length; j++) {
+        for (var i = 0; i < bars.length; i++) {
+            if (events[j].barId == bars[i].id) {
+                events[j].price = events[j].time * bars[i].pricePerHour + events[j].persons* bars[i].pricePerPerson;
+            }
+        }
 
+    }
+
+}
+calculateprice();
 console.log(bars);
 console.log(events);
 console.log(actors);
