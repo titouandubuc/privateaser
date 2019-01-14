@@ -150,7 +150,20 @@ function calculateprice() {
     for (var j = 0; j < events.length; j++) {
         for (var i = 0; i < bars.length; i++) {
             if (events[j].barId == bars[i].id) {
-                events[j].price = events[j].time * bars[i].pricePerHour + events[j].persons* bars[i].pricePerPerson;
+              if (events[j].persons < 10 ) {
+                    events[j].price = (events[j].time * bars[i].pricePerHour + events[j].persons * bars[i].pricePerPerson);
+                }
+                if (events[j].persons >= 10 && events[j].persons < 20) {
+                    events[j].price = events[j].time * bars[i].pricePerHour +( events[j].persons * bars[i].pricePerPerson)*0.9;
+                }
+                if (events[j].persons >= 20 && events[j].persons < 60) {
+                    events[j].price = events[j].time * bars[i].pricePerHour +( events[j].persons * bars[i].pricePerPerson)*0.7;
+                }
+                if (events[j].persons >= 60 ) {
+                    events[j].price = events[j].time * bars[i].pricePerHour + (events[j].persons * bars[i].pricePerPerson)*0.5;
+                }
+
+
             }
         }
 
