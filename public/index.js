@@ -170,7 +170,19 @@ function calculateprice() {
     }
 
 }
+function calculateComission(){
+  var commission=0;
+  for(var j=0;j<events.length;j++){
+    commission=events[j].price*0.3;
+    events[j].commission.treasury=events[j].persons;
+    events[j].commission.insurance=commission/2;
+    events[j].commission.privateaser=commission-events[j].commission.insurance-events[j].commission.treasury;
+
+  }
+
+}
 calculateprice();
+calculateComission();
 console.log(bars);
 console.log(events);
 console.log(actors);
