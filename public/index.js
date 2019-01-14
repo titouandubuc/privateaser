@@ -162,6 +162,10 @@ function calculateprice() {
                 if (events[j].persons >= 60 ) {
                     events[j].price = events[j].time * bars[i].pricePerHour + (events[j].persons * bars[i].pricePerPerson)*0.5;
                 }
+                if(events[j].options.deductibleReduction==true)
+                {
+                  events[j].price+=events[j].persons;
+                }
 
 
             }
