@@ -185,8 +185,31 @@ function calculateComission(){
   }
 
 }
+function calculateactors(){
+  for(var i=0;i<actors.length;i++)
+  {
+    for(var j=0;j<events.length;j++){
+      if(actors[i].eventId==events[j].id){
+        actors[i].payment[0].amount=events[j].price;
+        if(events[j].options.deductibleReduction==true)
+        {
+            actors[i].payment[1].amount=(events[j].price-events[j].persons)*0.7;
+        }
+        else{
+          actors[i].payment[1].amount=events[j].price*0.7;
+        }
+        
+        actors[i].payment[2].amount=events[j].commission.insurance;
+        actors[i].payment[3].amount=events[j].commission.treasury;
+        actors[i].payment[4].amount=events[j].commission.privateaser;
+      }
+    }
+
+  }
+}
 calculateprice();
 calculateComission();
+calculateactors();
 console.log(bars);
 console.log(events);
 console.log(actors);
