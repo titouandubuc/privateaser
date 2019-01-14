@@ -193,7 +193,7 @@ function calculateactors(){
         actors[i].payment[0].amount=events[j].price;
         if(events[j].options.deductibleReduction==true)
         {
-            actors[i].payment[1].amount=(events[j].price-events[j].persons)*0.7;
+            actors[i].payment[1].amount=events[j].price*0.7-events[j].persons;
         }
         else{
           actors[i].payment[1].amount=events[j].price*0.7;
